@@ -1,11 +1,6 @@
-# UeberauthTwitch
-
-**TODO: Add description**
+# Ueberauth Twitch
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ueberauth_twitch` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
