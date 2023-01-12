@@ -30,17 +30,12 @@ defmodule Ueberauth.Strategy.Twitch do
   end
 
   def handle_request!(conn) do
-    opts = [
-      client_id: UeberauthTwitch.client_id(),
-      redirect_uri: callback_url(conn)
-    ]
-
     opts =
-      if conn.params["state"] do
-        Keyword.put(opts, :state, conn.params["state"])
-      else
-        opts
-      end
+      [
+        client_id: UeberauthTwitch.client_id(),
+        redirect_uri: callback_url(conn)
+      ]
+      |> with_state_param(conn)
 
     redirect!(conn, Ueberauth.Strategy.Twitch.OAuth.authorize_url!(opts))
   end
